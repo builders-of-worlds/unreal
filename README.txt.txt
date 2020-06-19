@@ -1,3 +1,4 @@
 SZEVASZTOK BARÁTAIM!!!
 
-Szevusz Kedves (és méltán népszerű) István!
+Szevusz Kedves (pöcs) István!
+
