@@ -1,4 +1,4 @@
 SZEVASZTOK BARÁTAIM!!!
 
-Szevusz Kedves (pöcs) István!
+Szevusz Kedves (pöcs a Gábor) István!
 
