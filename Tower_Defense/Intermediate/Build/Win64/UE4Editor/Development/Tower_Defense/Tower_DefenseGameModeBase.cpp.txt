@@ -1,0 +1,7 @@
+C:\Users\dosa\Documents\Unreal Projects\Tower_Defense\Intermediate\Build\Win64\UE4Editor\Development\Tower_Defense\Definitions.Tower_Defense.h
+c:\users\dosa\documents\unreal projects\tower_defense\source\tower_defense\Tower_DefenseGameModeBase.h
+C:\Program Files\Epic Games\UE_4.25\Engine\Source\Runtime\Engine\Classes\GameFramework/GameModeBase.h
+C:\Program Files\Epic Games\UE_4.25\Engine\Source\Runtime\Engine\Classes\Engine/ServerStatReplicator.h
+C:\Program Files\Epic Games\UE_4.25\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\ServerStatReplicator.generated.h
+C:\Program Files\Epic Games\UE_4.25\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\GameModeBase.generated.h
+C:\Users\dosa\Documents\Unreal Projects\Tower_Defense\Intermediate\Build\Win64\UE4Editor\Inc\Tower_Defense\Tower_DefenseGameModeBase.generated.h

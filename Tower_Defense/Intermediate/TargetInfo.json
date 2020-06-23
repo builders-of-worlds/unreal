@@ -1,0 +1,14 @@
+{
+	"Targets": [
+		{
+			"Name": "Tower_Defense",
+			"Path": "C:\\Users\\dosa\\Documents\\Unreal Projects\\Tower_Defense\\Source\\Tower_Defense.Target.cs",
+			"Type": "Game"
+		},
+		{
+			"Name": "Tower_DefenseEditor",
+			"Path": "C:\\Users\\dosa\\Documents\\Unreal Projects\\Tower_Defense\\Source\\Tower_DefenseEditor.Target.cs",
+			"Type": "Editor"
+		}
+	]
+}
