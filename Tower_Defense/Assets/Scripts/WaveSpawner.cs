@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class WaveSpawner : MonoBehaviour
 {
     public Transform enemyPrefab;
-    public Transform zombiePrefab;
+    public Transform enemy_2Prefab;
 
     public Transform spawnPoint;
 
@@ -38,7 +38,7 @@ public class WaveSpawner : MonoBehaviour
             }
             else
             {
-                SpawnZombie();
+                SpawnEnemy_2();
             }
             
             yield return new WaitForSeconds(0.5f);
@@ -53,8 +53,8 @@ public class WaveSpawner : MonoBehaviour
         
     }
 
-    void SpawnZombie()
+    void SpawnEnemy_2()
     {
-        Instantiate(zombiePrefab, spawnPoint.position, spawnPoint.rotation);
+        Instantiate(enemy_2Prefab, spawnPoint.position, spawnPoint.rotation);
     }
 }
