@@ -44,7 +44,7 @@ public class WaveSpawner : MonoBehaviour
             yield return new WaitForSeconds(0.5f);
         }
         
-        Debug.Log("Támadás indítása!");
+        Debug.Log("Hullám indítása!");
     }
 
     void SpawnEnemy()
