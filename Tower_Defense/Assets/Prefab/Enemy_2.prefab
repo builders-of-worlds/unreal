@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8433393508669540896}
   - component: {fileID: 2051655077118001555}
   m_Layer: 0
-  m_Name: Enemi_2
+  m_Name: Enemy_2
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -109,7 +109,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthBar: {fileID: 0}
   speed: 5
-  hp: 100
+  hp: 1000
 --- !u!1001 &10955073015773374
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -12,6 +12,6 @@ public class HeavyEnemy : Enemy
             Destroy(gameObject);
 
         this.HealthBar.fillAmount = hp / 100f;
-        Debug.Log(hp + "++++++++++++++++++++++++++++++++++++++++++++");
+        Debug.Log(hp + "teszt");
     }
 }

@@ -6,7 +6,7 @@ abstract public class Enemy : MonoBehaviour
 
 
     [Header("Unity Stuff")]
-    public Image healthBar;
+    public Image HealthBar;
 
     public float speed;
     public float hp = 100f;
@@ -14,10 +14,12 @@ abstract public class Enemy : MonoBehaviour
     private Transform target;
     private int wavepointIndex = 0;
 
-    public Image HealthBar { get => healthBar; set => healthBar = value; }
+    //public Image HealthBar { get => healthBar; set => healthBar = value; }
 
     void Start()
     {
+        
+       
         target = Waypoints.points[0];
     }
 
@@ -42,7 +44,7 @@ abstract public class Enemy : MonoBehaviour
         if (wavepointIndex >= Waypoints.points.Length - 1)
         {
             Destroy(gameObject);
-            return;
+            //return;
         }
         wavepointIndex++;
         target = Waypoints.points[wavepointIndex];
