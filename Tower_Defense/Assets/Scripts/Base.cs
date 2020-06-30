@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class Base : MonoBehaviour
 {
-    //[Header("Unity Stuff")]
-    //public Image healthBarBase;
-
+    
     public float speed;
     public float hp = 100f;
 
     private Transform target;
     private int wavepoint_baseIndex = 0;
 
-    //public Image HealthBarBase { get => healthBarBase; set => healthBarBase = value; }
+    //Időzítés
+
+    
 
     void Start()
     {
@@ -28,7 +28,11 @@ public class Base : MonoBehaviour
         if (Vector2.Distance(transform.position, target.position) <= 0.1f)
         {
             GetNextWaypoint_Base();
+            
         }
+        
+
+
     }
 
     public virtual void TakeDamage(float amount)
@@ -40,7 +44,8 @@ public class Base : MonoBehaviour
 
         if (wavepoint_baseIndex >= Waypoints_Base.points.Length - 1)
         {
-            Destroy(gameObject);
+            Debug.Log("Győztél!");
+            //Destroy(gameObject);
             return;
         }
         wavepoint_baseIndex++;
