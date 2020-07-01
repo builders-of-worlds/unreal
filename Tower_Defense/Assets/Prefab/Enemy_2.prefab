@@ -107,9 +107,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18e44cba0b9d466479929b1459a000d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthBar: {fileID: 0}
-  speed: 5
-  hp: 1000
+  HealthBar: {fileID: 4506998592991952192}
+  speed: 3
+  hp: 70
 --- !u!1001 &10955073015773374
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -275,3 +275,15 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 10955073015773374}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4506998592991952192 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4515695096719443454, guid: 2ca23702d3c2ab942892a3fc39637840,
+    type: 3}
+  m_PrefabInstance: {fileID: 10955073015773374}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
