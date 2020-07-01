@@ -4,57 +4,120 @@ using UnityEngine.UI;
 
 public class WaveSpawner : MonoBehaviour
 {
-    public Transform enemyPrefab;
-    public Transform enemy_2Prefab;
 
-    public Transform spawnPoint;
+    public enum SpawnState { SPAWING, WATTING, COUNTING };
+
+    [System.Serializable]
+    public class Wave
+    {
+
+        public string name;
+        public Transform enemy;
+        public int count;
+        public float rate;
+
+    }
+    public Wave[] waves;
+    private int nextWave = 0;
 
     public float timeBetweenWaves = 5f;
-    private float countdown = 2f;
-    public Text waveCountdownText;
-    private int waveIndex = 0;
+    public float waveCountdown;
+
+    private float searchCountdown = 1f;
+
+    private SpawnState state = SpawnState.COUNTING;
+
+    void Start()
+    {
+
+        waveCountdown = timeBetweenWaves;
+
+    }
 
     void Update()
     {
-        if (countdown <= 0f)
+        if (state == SpawnState.WATTING)
         {
-            StartCoroutine(SpawnWave());
-            countdown = timeBetweenWaves;
-        }
 
-        countdown -= Time.deltaTime;
-        waveCountdownText.text = Mathf.Floor(countdown).ToString();
-    }
-
-    IEnumerator SpawnWave()
-    {
-        waveIndex++;
-
-        for (int i = 0; i < waveIndex; i++)
-        {
-            if (i % 2 == 0)
+            //check enemy 
+            if (!EnemyIsAlive())
             {
-                SpawnEnemy();
+
+                //begin a new round
+                Debug.Log("wave complete");
+                return;
             }
             else
             {
-                SpawnEnemy_2();
+                return;
             }
-            
-            yield return new WaitForSeconds(0.5f);
         }
-        
-        Debug.Log("Hullám indítása!");
+
+        if (waveCountdown <= 0)
+        {
+
+            if (state != SpawnState.SPAWING)
+            {
+
+                StartCoroutine(SpawnWave(waves[nextWave]));
+
+            }
+
+        }
+        else
+        {
+
+            waveCountdown -= Time.deltaTime;
+
+        }
+
+
+
     }
 
-    void SpawnEnemy()
+    //
+    bool EnemyIsAlive()
     {
-        Instantiate(enemyPrefab, spawnPoint.position, spawnPoint.rotation);
-        
+        searchCountdown -= Time.deltaTime;
+        if (searchCountdown <= 0f)
+        {
+            searchCountdown = 1f;
+            if (GameObject.FindGameObjectWithTag("Enemy") == null)
+            {
+
+                return false;
+
+            }
+        }
+
+        return true;
+
     }
 
-    void SpawnEnemy_2()
+    IEnumerator SpawnWave(Wave _wave)
     {
-        Instantiate(enemy_2Prefab, spawnPoint.position, spawnPoint.rotation);
+        //Debug.Log("spawn enemy" + _enemy.name);
+        state = SpawnState.SPAWING;
+
+        for (int i = 0; i < _wave.count; i++)
+        {
+            SpawnEnemy(_wave.enemy);
+            yield return new WaitForSeconds(1f / _wave.rate);
+        }
+
+        state = SpawnState.WATTING;
+
+        yield break;
+
     }
+
+    void SpawnEnemy(Transform _enemy)
+    {
+
+        //spawn enemy
+        Debug.Log("spawn enemy" + _enemy.name);
+        Instantiate(_enemy, transform.position, transform.rotation);
+
+    }
+
 }
