@@ -19,6 +19,20 @@ abstract public class Enemy : MonoBehaviour
     private Transform route;
     private int wavepointIndex = 0;
 
+    //turret lőtávolsága
+
+    public float range = 3f;
+    public float fireRate = 1f;
+    private float fireCountdown = 0f;
+
+    public GameObject bulletPrefab;
+    public Transform firepoint;
+
+    [Header("Unity Setup Fields")]
+
+    //cimke az ellenséges objektumokhoz
+    public string enemyTag = "Player";
+
     //public Image HealthBar { get => healthBar; set => healthBar = value; }
 
     public Enemy()
