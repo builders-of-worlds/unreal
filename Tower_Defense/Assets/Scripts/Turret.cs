@@ -11,9 +11,10 @@ public class Turret : MonoBehaviour
     //referencia a célponthoz
     public Transform target;
 
-    [Header("Attributes")]
+    //[Header("Attributes")]
 
     //turret lőtávolsága
+    
     public float range = 3f;
     public float fireRate = 1f;
     private float fireCountdown = 0f;
