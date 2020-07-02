@@ -4,6 +4,11 @@ using UnityEngine.UI;
 abstract public class Enemy : MonoBehaviour
 {
 
+    private static int idCounter = -1;
+
+    private int objectId;
+    public int ObjectId { get { return this.objectId; } }
+
 
     [Header("Unity Stuff")]
     public Image HealthBar;
@@ -11,24 +16,31 @@ abstract public class Enemy : MonoBehaviour
     public float speed;
     public float hp = 100f;
 
-    private Transform target;
+    private Transform route;
     private int wavepointIndex = 0;
 
     //public Image HealthBar { get => healthBar; set => healthBar = value; }
 
+    public Enemy()
+    {
+        idCounter++;
+        this.objectId = idCounter;
+    }
+
     void Start()
     {
-        
+
+        Debug.Log("#ObjectID: " + this.objectId);
        
-        target = Waypoints.points[0];
+        route = Waypoints.points[0];
     }
 
     void Update()
     {
-        Vector2 dir = target.position - transform.position;
+        Vector2 dir = route.position - transform.position;
         transform.Translate(dir.normalized * speed * Time.deltaTime, Space.World);
 
-        if (Vector2.Distance(transform.position, target.position) <= 0.1f)
+        if (Vector2.Distance(transform.position, route.position) <= 0.1f)
         {
             GetNextWaypoint();
         }
@@ -47,7 +59,7 @@ abstract public class Enemy : MonoBehaviour
             return;
         }
         wavepointIndex++;
-        target = Waypoints.points[wavepointIndex];
+        route = Waypoints.points[wavepointIndex];
     }
 }
 

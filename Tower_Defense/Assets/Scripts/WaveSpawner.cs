@@ -17,6 +17,7 @@ public class WaveSpawner : MonoBehaviour
         public float rate;
 
     }
+
     public Wave[] waves;
     private int nextWave = 0;
 
