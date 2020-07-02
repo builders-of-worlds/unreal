@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class Turret : MonoBehaviour
 {
-    /*
-    Turret forgatása nélküli verzió
-   */
 
     //referencia a célponthoz
     public Transform target;
