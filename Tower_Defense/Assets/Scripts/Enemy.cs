@@ -22,7 +22,6 @@ abstract public class Enemy : MonoBehaviour
     private int wavepointIndex = 0;
 
     // lőtávolsága
-
     public float range = 3f;
     public float fireRate = 1f;
     private float fireCountdown = 0f;
@@ -53,7 +52,7 @@ abstract public class Enemy : MonoBehaviour
         route = Waypoints.points[0];
     }
 
-    //turret aktuális célpontját frissítő metódus
+    //enemy aktuális célpontját frissítő metódus
     void UpdateTarget()
     {
         //összes Player cimkés game object összegyűjtése egy tömbbe 
@@ -65,10 +64,10 @@ abstract public class Enemy : MonoBehaviour
         //segédváltozó az aktuális legközelebbi ellenfélhez
         GameObject nearestPlayer = null;
 
-        //bejárjuk az enemy tömböt
+        //bejárjuk a player tömböt
         foreach (GameObject player in players)
         {
-            //aktuális elem távolséga a turrettől
+            //aktuális elem távolséga a enemytől
             float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
             //ha az aktuális elem távolsága kisebb mint az eddigi legkisebb akkor
             if (distanceToPlayer < shortestDistanceToPlayer)
