@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5948376098464942307}
   - component: {fileID: -8794523858675415613}
+  - component: {fileID: 3952495475525426634}
   m_Layer: 8
   m_Name: StandardTurret 1 1
   m_TagString: Untagged
@@ -40,7 +41,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1131083806135115228}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 689403bcd4d86274ea88a69d48eb5629, type: 3}
   m_Name: 
@@ -53,6 +54,18 @@ MonoBehaviour:
   firepoint: {fileID: 3309915707409797304, guid: c45b4cf626a43f24b8ebcfe52e3577a2,
     type: 3}
   enemyTag: Enemy
+--- !u!114 &3952495475525426634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1131083806135115228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f773678c37adfe42aaf2a347bfb6276, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8276313973977146446
 GameObject:
   m_ObjectHideFlags: 0
