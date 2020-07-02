@@ -113,3 +113,16 @@ MonoBehaviour:
   spawnPoint: {fileID: 7494185729927503474}
   timeBetweenWaves: 15
   waveCountdownText: {fileID: 0}
+  waves:
+  - name: 
+    enemy: {fileID: 0}
+    count: 0
+    rate: 0
+  - name: 
+    enemy: {fileID: 0}
+    count: 0
+    rate: 0
+  - name: 
+    enemy: {fileID: 0}
+    count: 0
+    rate: 0

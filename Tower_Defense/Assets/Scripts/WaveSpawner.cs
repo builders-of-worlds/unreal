@@ -4,8 +4,19 @@ using UnityEngine.UI;
 
 public class WaveSpawner : MonoBehaviour
 {
+    //counter
 
-    public enum SpawnState { SPAWING, WATTING, COUNTING };
+
+    //Enemy prefabok bekérése
+    public Transform enemyPrefab;
+    public Transform enemy_2Prefab;
+    //Enemy létrehozásának a helye
+    public Transform spawnPoint;
+    //Visszaszámlálás indítása, és a kiíráshoz szükséges txt bekérése
+    public float timeBetweenWaves = 5f;
+    private float countdown = 2f;
+    public Text waveCountdownText;
+    private int waveIndex = 0;
 
     [System.Serializable]
     public class Wave
@@ -17,108 +28,54 @@ public class WaveSpawner : MonoBehaviour
         public float rate;
 
     }
-
     public Wave[] waves;
     private int nextWave = 0;
 
-    public float timeBetweenWaves = 5f;
-    public float waveCountdown;
 
-    private float searchCountdown = 1f;
-
-    private SpawnState state = SpawnState.COUNTING;
-
-    void Start()
-    {
-
-        waveCountdown = timeBetweenWaves;
-
-    }
-
+    //Visszaszámlálás
     void Update()
     {
-        if (state == SpawnState.WATTING)
+        if (countdown <= 0f)
         {
+            StartCoroutine(SpawnWave());
+            countdown = timeBetweenWaves;
+        }
 
-            //check enemy 
-            if (!EnemyIsAlive())
+        countdown -= Time.deltaTime;
+        waveCountdownText.text = Mathf.Floor(countdown).ToString();
+    }
+
+    //Enemy létrehozása a játéktérben
+    IEnumerator SpawnWave()
+    {
+        waveIndex++;
+
+        for (int i = 0; i < waveIndex; i++)
+        {
+            if (i % 2 == 0)
             {
-
-                //begin a new round
-                Debug.Log("wave complete");
-                return;
+                SpawnEnemy();
             }
             else
             {
-                return;
-            }
-        }
-
-        if (waveCountdown <= 0)
-        {
-
-            if (state != SpawnState.SPAWING)
-            {
-
-                StartCoroutine(SpawnWave(waves[nextWave]));
-
+                SpawnEnemy_2();
             }
 
-        }
-        else
-        {
-
-            waveCountdown -= Time.deltaTime;
-
+            yield return new WaitForSeconds(0.5f);
         }
 
+        Debug.Log("Hullám indítása!");
+    }
 
+    void SpawnEnemy()
+    {
+        Instantiate(enemyPrefab, spawnPoint.position, spawnPoint.rotation);
 
     }
 
-    //
-    bool EnemyIsAlive()
+    void SpawnEnemy_2()
     {
-        searchCountdown -= Time.deltaTime;
-        if (searchCountdown <= 0f)
-        {
-            searchCountdown = 1f;
-            if (GameObject.FindGameObjectWithTag("Enemy") == null)
-            {
-
-                return false;
-
-            }
-        }
-
-        return true;
-
-    }
-
-    IEnumerator SpawnWave(Wave _wave)
-    {
-        //Debug.Log("spawn enemy" + _enemy.name);
-        state = SpawnState.SPAWING;
-
-        for (int i = 0; i < _wave.count; i++)
-        {
-            SpawnEnemy(_wave.enemy);
-            yield return new WaitForSeconds(1f / _wave.rate);
-        }
-
-        state = SpawnState.WATTING;
-
-        yield break;
-
-    }
-
-    void SpawnEnemy(Transform _enemy)
-    {
-
-        //spawn enemy
-        Debug.Log("spawn enemy" + _enemy.name);
-        Instantiate(_enemy, transform.position, transform.rotation);
-
+        Instantiate(enemy_2Prefab, spawnPoint.position, spawnPoint.rotation);
     }
 
 }
