@@ -9,6 +9,8 @@ abstract public class Enemy : MonoBehaviour
     private int objectId;
     public int ObjectId { get { return this.objectId; } }
 
+    //referencia a célponthoz
+    public Transform target;
 
     [Header("Unity Stuff")]
     public Image HealthBar;
@@ -19,7 +21,7 @@ abstract public class Enemy : MonoBehaviour
     private Transform route;
     private int wavepointIndex = 0;
 
-    //turret lőtávolsága
+    // lőtávolsága
 
     public float range = 3f;
     public float fireRate = 1f;
@@ -31,7 +33,7 @@ abstract public class Enemy : MonoBehaviour
     [Header("Unity Setup Fields")]
 
     //cimke az ellenséges objektumokhoz
-    public string enemyTag = "Player";
+    public string playerTag = "Player";
 
     //public Image HealthBar { get => healthBar; set => healthBar = value; }
 
@@ -43,14 +45,76 @@ abstract public class Enemy : MonoBehaviour
 
     void Start()
     {
+        InvokeRepeating("UpdateTarget", 0f, 0.5f);
+        InvokeRepeating("UpdateShoot", 0f, 0.1f);
 
         Debug.Log("#ObjectID: " + this.objectId);
        
         route = Waypoints.points[0];
     }
 
+    //turret aktuális célpontját frissítő metódus
+    void UpdateTarget()
+    {
+        //összes Player cimkés game object összegyűjtése egy tömbbe 
+        GameObject[] players = GameObject.FindGameObjectsWithTag(playerTag);
+
+        //legközelebbi ellenfél távolsága = végtelen
+        float shortestDistanceToPlayer = Mathf.Infinity;
+
+        //segédváltozó az aktuális legközelebbi ellenfélhez
+        GameObject nearestPlayer = null;
+
+        //bejárjuk az enemy tömböt
+        foreach (GameObject player in players)
+        {
+            //aktuális elem távolséga a turrettől
+            float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
+            //ha az aktuális elem távolsága kisebb mint az eddigi legkisebb akkor
+            if (distanceToPlayer < shortestDistanceToPlayer)
+            {
+                //átállítjuk erre az értékre a legközelebbi távot
+                shortestDistanceToPlayer = distanceToPlayer;
+                //beállítjuk a segédváltozót az aktuális elemre 
+                nearestPlayer = player;
+            }
+        }
+
+        //ha van legközelebbi ellenséges game object és lőtávon belül van akkor
+        if (nearestPlayer != null && shortestDistanceToPlayer <= range)
+        {
+            // a target adattagot beállítjuk erre a referenciára
+            target = nearestPlayer.transform;
+        }
+        else
+        {
+            target = null;
+        }
+    }
+
+    void UpdateShoot()
+    {
+
+        if (target == null)
+        {
+            return;
+        }
+
+        if (fireCountdown <= 0f)
+        {
+            Shoot();
+
+            fireCountdown = 1f / fireRate;
+        }
+
+        fireCountdown -= Time.deltaTime;
+
+    }
+
+
     void Update()
     {
+        
         Vector2 dir = route.position - transform.position;
         transform.Translate(dir.normalized * speed * Time.deltaTime, Space.World);
 
@@ -74,6 +138,20 @@ abstract public class Enemy : MonoBehaviour
         }
         wavepointIndex++;
         route = Waypoints.points[wavepointIndex];
+    }
+
+    void Shoot()
+    {
+        GameObject bulletGO = (GameObject)Instantiate(bulletPrefab, firepoint.position, firepoint.rotation);
+
+        Bulet bullet = bulletGO.GetComponent<Bulet>();
+
+        if (bullet != null)
+        {
+            bullet.Seek(this.target);
+        }
+
+        Debug.Log("Shooot!");
     }
 }
 
