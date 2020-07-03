@@ -16,8 +16,9 @@ public class LightEnemy : Enemy
         else
             Destroy(gameObject);
 
-        this.HealthBar.fillAmount = hp / 100f;
+       
         Debug.Log(hp + "++++++++++++++++++++++++++++++++++++++++++++");
+        
 
     }
 

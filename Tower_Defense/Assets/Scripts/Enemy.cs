@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
+
+
 abstract public class Enemy : MonoBehaviour
 {
 
@@ -12,8 +14,10 @@ abstract public class Enemy : MonoBehaviour
     //referencia a célponthoz
     public Transform target;
 
-    [Header("Unity Stuff")]
-    public Image HealthBar;
+    //public HealthBar HealthBar { get; }
+
+    //[Header("Unity Stuff")]
+    
 
     public float speed;
     public float hp = 100f;
@@ -44,6 +48,9 @@ abstract public class Enemy : MonoBehaviour
 
     void Start()
     {
+
+        HealthBar = new HealthBar();
+
         InvokeRepeating("UpdateTarget", 0f, 0.5f);
         InvokeRepeating("UpdateShoot", 0f, 0.1f);
 
@@ -125,6 +132,7 @@ abstract public class Enemy : MonoBehaviour
 
     public virtual void TakeDamage(float amount)
     {
+       
     }
 
     void GetNextWaypoint()
