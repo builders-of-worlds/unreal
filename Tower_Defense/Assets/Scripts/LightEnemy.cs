@@ -16,7 +16,8 @@ public class LightEnemy : Enemy
         else
             Destroy(gameObject);
 
-       
+        this.courrentHealth -= amount;
+        healthBar.SetHealth(courrentHealth);
         Debug.Log(hp + "++++++++++++++++++++++++++++++++++++++++++++");
         
 
