@@ -9,11 +9,15 @@ public class HeavyEnemy : Enemy
     public override void TakeDamage(float amount)
     {
         if (this.hp - amount > 0f)
-            this.hp -= (amount * 1.5f);
+        {
+            this.hp -= (amount);
+            healthBar.SetHealth(this.hp);
+
+        }
+
         else
             Destroy(gameObject);
 
-        
-        Debug.Log(hp + "teszt");
     }
+
 }

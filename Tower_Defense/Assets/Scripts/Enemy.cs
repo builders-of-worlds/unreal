@@ -14,12 +14,6 @@ abstract public class Enemy : MonoBehaviour
     //referencia a célponthoz
     public Transform target;
 
-    //healthbar hozzáadáasa
-    public HealthBar healthBar;
-
-    //[Header("Unity Stuff")]
-    
-
     public float speed;
     public float hp = 100f;
 
@@ -34,13 +28,12 @@ abstract public class Enemy : MonoBehaviour
     public GameObject bulletPrefab;
     public Transform firepoint;
 
+    //healthbar hozzáadáasa
     [Header("Unity Setup Fields")]
-    public float courrentHealth;
-    public HealthBar healthbar;
-    //cimke az ellenséges objektumokhoz
+    public HealthBar healthBar;
+    
+    
     public string playerTag = "Player";
-
-    //public Image HealthBar { get => healthBar; set => healthBar = value; }
 
     public Enemy()
     {
@@ -50,8 +43,7 @@ abstract public class Enemy : MonoBehaviour
 
     void Start()
     {
-
-        courrentHealth = hp;
+        //healthbar 
         healthBar.SetMaxHealth(hp);
 
         InvokeRepeating("UpdateTarget", 0f, 0.5f);

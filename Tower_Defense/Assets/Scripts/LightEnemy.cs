@@ -10,16 +10,16 @@ public class LightEnemy : Enemy
     
     public override void TakeDamage(float amount)
     {
-        
+
         if (this.hp - amount > 0f)
+        {
             this.hp -= (amount * 1.5f);
+            healthBar.SetHealth(this.hp);
+
+        }
+
         else
             Destroy(gameObject);
-
-        this.courrentHealth -= amount;
-        healthBar.SetHealth(courrentHealth);
-        Debug.Log(hp + "++++++++++++++++++++++++++++++++++++++++++++");
-        
 
     }
 
