@@ -17,6 +17,9 @@ abstract public class Enemy : MonoBehaviour
     public float speed;
     public float hp = 100f;
 
+    // pénz hozzáadása
+    public int worth = 50;
+
     private Transform route;
     private int wavepointIndex = 0;
 

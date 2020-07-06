@@ -8,6 +8,8 @@ public class LightEnemy : Enemy
 {
 
     
+    
+
     public override void TakeDamage(float amount)
     {
 
@@ -19,7 +21,9 @@ public class LightEnemy : Enemy
         }
 
         else
-            Destroy(gameObject);
+        PlayerStats.Money += this.worth;
+        Debug.Log(PlayerStats.Money += this.worth);
+        Destroy(gameObject);
 
     }
 
