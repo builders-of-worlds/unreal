@@ -6,7 +6,7 @@ public class MoneyUI : MonoBehaviour {
 
 	public Text moneyText;
 
-	// Update is called once per frame
+	// kiiratás frissítése
 	void Update () {
 		moneyText.text = "$" + PlayerStats.Money.ToString();
 	}
