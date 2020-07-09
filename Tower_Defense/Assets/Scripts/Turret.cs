@@ -5,6 +5,9 @@ using UnityEngine;
 public class Turret : MonoBehaviour
 {
 
+    public float Hp;
+    public int Price;
+
     //referencia a célponthoz
     public Transform target;
 
