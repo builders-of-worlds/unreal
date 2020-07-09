@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1583758055117380381}
   - component: {fileID: -8277278181668492293}
   m_Layer: 8
-  m_Name: Spot
+  m_Name: StandardSpot
   m_TagString: SPOT
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -121,5 +121,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7029cde5146e77949b8d05c36cfb5b28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  towerPrefab: {fileID: 1131083806135115228, guid: 792028082acfbbc479054e8c7c6f793a,
+  towerPrefab: {fileID: 8000748530114674995, guid: 0c2f14a9da5c953409ad57d02ae42f80,
     type: 3}
