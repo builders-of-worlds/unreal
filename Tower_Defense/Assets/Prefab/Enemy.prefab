@@ -144,7 +144,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 96fc1804594a6024d97324d26145f996, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -191,16 +191,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  healthBar: {fileID: 121860261891990883}
   speed: 2
   hp: 100
+  worth: 50
   range: 3
   fireRate: 15
   bulletPrefab: {fileID: 1880204062210598719, guid: d2e0f22b455e85a4f839527f8d641942,
     type: 3}
   firepoint: {fileID: 6868994729134452336}
-  courrentHealth: 100
-  healthbar: {fileID: 121860261891990883}
+  healthBar: {fileID: 121860261891990883}
   playerTag: Player
 --- !u!1001 &8090304736764973142
 PrefabInstance:
