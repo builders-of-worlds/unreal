@@ -108,6 +108,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 689403bcd4d86274ea88a69d48eb5629, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Hp: 0
+  Price: 0
   target: {fileID: 0}
   range: 3
   fireRate: 1
@@ -348,6 +350,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 689403bcd4d86274ea88a69d48eb5629, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Hp: 0
+  Price: 0
   target: {fileID: 0}
   range: 3
   fireRate: 1
