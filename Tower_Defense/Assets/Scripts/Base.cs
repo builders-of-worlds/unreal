@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Base : MonoBehaviour
 {
@@ -11,14 +9,15 @@ public class Base : MonoBehaviour
     private Transform target;
     private int wavepoint_baseIndex = 0;
 
-    //Időzítés
-
-    
-
     void Start()
     {
         target = Waypoints_Base.points[0];
+        
     }
+
+    
+
+    
 
     void Update()
     {
@@ -35,17 +34,12 @@ public class Base : MonoBehaviour
 
     }
 
-    public virtual void TakeDamage(float amount)
-    {
-    }
-
     void GetNextWaypoint_Base()
     {
 
         if (wavepoint_baseIndex >= Waypoints_Base.points.Length - 1)
         {
-            Debug.Log("Győztél!");
-            //Destroy(gameObject);
+            
             return;
         }
         wavepoint_baseIndex++;

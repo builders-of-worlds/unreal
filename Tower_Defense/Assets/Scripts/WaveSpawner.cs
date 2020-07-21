@@ -8,6 +8,8 @@ public class WaveSpawner : MonoBehaviour {
 
 	public Wave[] waves;
 
+    
+
 	public Transform spawnPoint;
 
 	public float timeBetweenWaves = 5f;
@@ -23,6 +25,7 @@ public class WaveSpawner : MonoBehaviour {
 	{
 		if (EnemiesAlive > 0)
 		{
+            
 			return;
 		}
 
